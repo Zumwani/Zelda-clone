@@ -4,13 +4,19 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
 
+    [Header("Values")]
     public float max;
     public float value;
 
+    [Header("Effects")]
     [Tooltip("The duration for which this character cannot be damaged again after being damaged (Iframes).")]
     public float recoverTime;
     float currentRecoverTime;
 
+    public bool isInvincible;
+    [Label] public bool isRecovering;
+
+    [Header("Events")]
     public Event onDamage;
     public Event onHeal;
     public Event onDeath;

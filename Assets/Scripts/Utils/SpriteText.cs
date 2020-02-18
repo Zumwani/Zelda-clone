@@ -7,7 +7,6 @@ public class SpriteText : SpriteTextBase<SpriteRenderer>
 
     protected override Rect GetBounds(SpriteRenderer renderer)
     {
-        //return renderer.bounds;
         return new Rect(renderer.bounds.min, renderer.bounds.max);
     }
 

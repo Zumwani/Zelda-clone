@@ -71,6 +71,11 @@ public static class Extensions
         return new Vector2Int(Mathf.FloorToInt(vector.x), Mathf.FloorToInt(vector.y));
     }
 
+    public static Vector2 ToVector2(this Vector3 vector)
+    {
+        return new Vector2(vector.x, vector.y);
+    }
+
     public static Vector3Int ToVector3Int(this Vector2Int vector, int z = 0)
     {
         return new Vector3Int(vector.x, vector.y, z);

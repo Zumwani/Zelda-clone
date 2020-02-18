@@ -3,23 +3,65 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 //TODO: Map overworld, grottos and dungeons
 //TODO: Add items
-//TODO: Add ui
-//TODO: Add enemies
-//TODO: Add combat
-//TODO: Add warp points
-//TODO: Add map
+//TODO: Fix inventory ui
+//TODO: Fix triforce ui
+//TODO: Fix life ui
+//TODO: Fix overworld map ui
+//TODO: Fix underground map ui
 //TODO: Add pause menu
 //TODO: Add main menu
 //TODO: Add options menu
 //TODO: Add music
 //TODO: Add difficulty options (enemy health scaling, alternate tiles for bombable (or similar interactables))
 //TODO: Add note taking feature
+
+//TODO: AI
+//Rock
+//Tektite
+//Octorok
+//Peahat
+//Zora
+//Moblin
+//Leever
+//Armos
+//Lynel
+//Ghini
+
+//Zol and Gel
+//Rope
+//Vire et Keese
+//Stalfos
+//Wall master
+//Goriya
+//WizzRobe
+//Darknut
+//Pols Voice
+//Lanmola
+//Like Like
+//Gibido
+//Moldorm
+//Bubble
+//Patra
+//Traps and stone statues
+
+//Aquamentus
+//Dodongo
+//Manhandla
+//Gleeok
+//Digdogger
+//Gohma
+
+
+
+
+
 
 [ExecuteAlways]
 public class Map : Singleton<Map>
