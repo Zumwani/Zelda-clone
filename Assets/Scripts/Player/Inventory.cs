@@ -1,31 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using UnityEngine;
 
-public static class Inventory
+public class Inventory
 {
 
-    static readonly Dictionary<Item, int> items = new Dictionary<Item, int>();
+    Dictionary<Item, int> items = new Dictionary<Item, int>();
 
-    public static IReadOnlyDictionary<Item, int> Items { get; }
+    public IReadOnlyDictionary<Item, int> Items { get; }
 
-    static Inventory()
-    {
+    public Inventory() =>
         Items = new ReadOnlyDictionary<Item, int>(items);
-    }
 
-    public static void Add(Item item)
-    {
+    public void Add(Item item) =>
         items[item] = 1;
-    }
 
-    public static void Remove(Item item)
-    {
+    public void Remove(Item item) =>
         items[item] = 0;
-    }
 
-    public static void Add(Item item, int count = 1)
+    public void Set(Dictionary<Item, int> items) =>
+        this.items = items;
+
+    public void Add(Item item, int count = 1)
     {
 
         if (!item.isStackable)
@@ -40,16 +36,14 @@ public static class Inventory
 
     }
 
-    public static void Remove(Item item, int count = 1)
+    public void Remove(Item item, int count = 1)
     {
         Add(item, -count);
         Debug.Log("Item removed: " + item.name + ": " + count);
     }
 
-    public static bool HasItem(Item item)
-    {
-        return items[item] > 0;
-    }
+    public bool HasItem(Item item) =>
+        items[item] > 0;
 
 }
 
@@ -61,16 +55,14 @@ public static class ItemExtensions
 
         if (item && item.Count() > 0 && item.CanUse())
         {
-            Inventory.Remove(item);
+            Player.Current.inventory.Remove(item);
             item.OnUse();
         }
 
     }
 
-    public static int Count(this Item item)
-    {
-        return Inventory.Items[item];
-    }
+    public static int Count(this Item item) =>
+        Player.Current.inventory.Items[item];
 
     public static int MaxCount(this Item item)
     {
@@ -84,10 +76,7 @@ public static class ItemExtensions
 
     }
 
-    public static bool HasInInventory(this Item item)
-    {
-        if (!item) return false;
-        return item.Count() > 0;
-    }
+    public static bool HasInInventory(this Item item) =>
+        item ? item.Count() > 0 : false;
 
 }

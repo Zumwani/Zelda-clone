@@ -80,8 +80,8 @@ public class Condition
     [ShowIf(nameof(@if), ConditionType.Inventory)]
     public Item contains;
 
-    [ShowIf(nameof(@if), ConditionType.Progress)]
-    public ProgressKey completed;
+    [ShowIf(nameof(@if), ConditionType.Inventory)]
+    public int count = 1;
 
     [ShowIf(nameof(@if), ConditionType.None, invert=true)]
     public bool equals;
@@ -93,9 +93,7 @@ public class Condition
             case ConditionType.None:
                 return true;
             case ConditionType.Inventory:
-                return Inventory.HasItem(contains) == equals;
-            case ConditionType.Progress:
-                return Progress.HasCompleted(completed) == equals;
+                return Player.Current.inventory.HasItem(contains) == equals;
             default:
                 return true;
         }

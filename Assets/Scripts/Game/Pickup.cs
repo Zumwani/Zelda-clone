@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
     {
         if (other.gameObject == Player.Current.gameObject)
         {
-            Inventory.Add(item, count);
+            Player.Current.inventory.Add(item, count);
             triggered.Invoke();
             Destroy(gameObject);
         }
